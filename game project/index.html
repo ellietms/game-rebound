@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Button Chaser</title>
+        <title>Rebound</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="game.css"/>
+        <link rel="stylesheet" type="text/css" href="rebound.css">
+        <script type="text/javascript" src="rebound.js"></script>
     </head>
     <body>
-        <div class="scoreLabel">Score: 0</div>
-        <div class="pageTitle">Button Chaser</div>
-        <div class="gameArea">
-            <button class="dot"></button>
+        <div id="playArea" class="playArea">
+            <div id="paddle" class="paddle">
+            </div>
+            <div id="ball" class="ball">
+            </div>
+            <div id="score" class="score">
+            Score: 0
+            </div>
         </div>
-        <script type="text/javascript" src="game.js"></script>
     </body>
 </html>
