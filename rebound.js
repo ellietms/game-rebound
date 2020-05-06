@@ -45,6 +45,12 @@ function init() {
     playingArea.addEventListener('touchmove',mouseMove,false);
     playingArea.addEventListener('touchend',mouseUp,false);
 
+    gear.addEventListener("click",showSettings,false);
+    newButton.addEventListener("click",newGame,false);
+    doneButton.addEventListener("click",hideSettings,false);
+    difficultySelect.addEventListener("change",function(){
+    setDifficulty(difficultySelect.selectedIndex)},false);
+
     timer = requestAnimationFrame(start);
 }
 
@@ -211,3 +217,42 @@ function mouseMove(event){
         paddle.style.left = paddleLeft + "px";
     }
 }
+
+    function showSettings(){
+        controls.style.display = "block";
+        cancelAnimationFrame(timer);//game is paused
+    }
+
+    function hideSettings(){
+        controls.style.display = "none";
+        timer = requestAnimationFrame(start);
+    }
+
+    function setDifficulty(diff){
+        switch(diff){
+            case 0 :
+                ballSpeedY = 2;
+                paddleSpeedX = 48;
+                break;
+            case 1 :
+                ballSpeedY = 4;
+                paddleSpeedX = 32;
+                break;
+            case 2 :
+                ballSpeedY = 6;
+                paddleSpeedX = 16;
+                break;
+            default:
+                ballSpeedY = 2;
+                paddleSpeedX = 48;      
+        }
+    }
+
+    function newGame(){
+        ballTop = 8;
+        currentScore = 0;
+        ballSpeedX = 2;
+        setDifficulty(difficultySelect.selectedIndex);
+        score.style.backgroundColor = "rgb(32,128,64)";
+        hideSettings();
+    }
