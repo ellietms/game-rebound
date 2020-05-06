@@ -128,7 +128,6 @@ function collisionY(){
     }
     //  check the top of the ball is bigger than 10+20+10+16+8 (height of paddle and score and page and ball)
     if(ballTop > playingAreaHeight - 64){
-        //after check ball left 
         // middle of paddle
         if(ballLeft >= paddleLeft + 16 && ballLeft < paddleLeft + 48){
             if(ballSpeedX < 0){
