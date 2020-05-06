@@ -5,7 +5,7 @@ body{
 .playArea{
     position: absolute;
     border: 1px black solid;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(240, 238, 122);
     top: 10px;
     left: 10px;
 }
@@ -15,7 +15,7 @@ body{
     left: 228px;
     width: 64px;
     height: 16px;
-    background-color: coral;
+    background-color: rgb(28, 8, 116);
 }
 .ball{
     position: absolute;
@@ -24,7 +24,7 @@ body{
     width: 16px;
     height: 16px;
     border-radius: 8px;
-    background-color: cornflowerblue;
+    background-color: rgb(153, 23, 51);
 }
 .score{
     position: absolute;
@@ -33,7 +33,7 @@ body{
     width: calc(100% - 10px);
     height: 20px;
     color: white;
-    background-color: rgb(32, 128, 64);
+    background-color: rgb(4, 73, 27);
     padding: 5px;
 }
 .controls{
@@ -46,7 +46,7 @@ body{
     padding-bottom: 5px;
     text-align: center;
     background-color: white;
-    box-shadow: 5px 5px 10px gray;
+    box-shadow: 5px 5px 10px rgb(193, 115, 200);
     display: none;
 }
 .controls h3{
