@@ -7,6 +7,8 @@ let controls;
 let newButton;
 let difficultySelect;
 let doneButton;
+let sound;
+let music;
 let availableWidth;
 let availableHeight;
 let playingAreaWidth;
@@ -21,6 +23,14 @@ let paddleRight = paddleLeft + 64;// 64 is the width of our paddle
 let ballLeft = 100;
 let ballTop = 8;
 let drag = false;
+let soundEnabled = false;
+let musicEnabled = false;
+
+let beepX;
+let beepY;
+let beepPaddle;
+let beepGameOver;
+let bgMusic;
 
 window.addEventListener("load",init);
 window.addEventListener("resize",init);// resize the screen based of user screen
@@ -35,6 +45,8 @@ function init() {
     newButton = document.getElementById("new");
     difficultySelect = document.getElementById("difficulty");
     doneButton = document.getElementById("done");
+    sound = document.getElementById("snd");
+    music = document.getElementById("music");
     layoutPage(); // determine all the sizes for game
     document.addEventListener("keydown",keyListener,false);// false is for bubble phase and true is for capture size 
     
