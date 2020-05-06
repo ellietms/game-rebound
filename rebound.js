@@ -125,9 +125,36 @@ function collisionY(){
     //  check the top of the ball is bigger than 10+20+10+16+8 (height of paddle and score and page and ball)
     if(ballTop > playingAreaHeight - 64){
         //after check ball left 
-        if(ballLeft >= paddleLeft && ballLeft <= paddleRight){
-            return true
+        // middle of paddle
+        if(ballLeft >= paddleLeft + 16 && ballLeft < paddleLeft + 48){
+            if(ballSpeedX < 0){
+                ballSpeedX = -2;
+            }
+            else{
+                ballSpeedX = 2;
+                return true;
+            }
         }
+        //left edge of paddle 
+        elseif(ballLeft >= paddleLeft || ballLeft < paddleLeft + 16){
+            if(ballSpeedX < 0){
+                ballSpeedX = -8;
+            }
+            else{
+                    ballSpeedX = 8;
+                    return true;
+                }
+        }
+        //right edge of paddle 
+        elseif(ballLeft >= paddleLeft + 48 && ballLeft <= paddleLeft + 64){
+            if(ballSpeedX < 0){
+                ballSpeedX = -8;
+            }
+            else{
+                    ballSpeedX = 8;
+                    return true;
+                }
+       }
     }
     return false;
 }
@@ -164,6 +191,7 @@ function mouseUp(event){
 function mouseMove(event){
     if(drag){
         event.preventDefault();
+        // 32 is the half width of paddle, 
         paddleLeft = event.clientX - 32 || event.targetTouches[0].pageX - 32;
         if(paddleLeft < 0)
         paddleLeft = 0;
