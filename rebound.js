@@ -24,18 +24,21 @@ function init() {
     ball = document.getElementById("ball");
     paddle = document.getElementById("paddle");
     score = document.getElementById("score");
-    playingArea = document.getElementById("playArea");
+    playingArea = document.getElementById("playingArea");
     layoutPage(); // determine all the sizes for game
     document.addEventListener("keydown",keyListener,false);// false is for bubble phase and true is for capture size 
     
-    playingArea.addEventListener("mousedown",mouseDown,false);
-    playingArea.addEventListener("mousemove",mouseMove,false);
-    playingArea.addEventListener("mouseUp",mouseUp,false);
-    playingArea.addEventListener("touchstart",mouseDown,false);
-    playingArea.addEventListener("touchmove",mouseMove,false);
-    playingArea.addEventListener("touched",mouseUp,false);
+    playingArea.addEventListener('mousedown',mouseDown,false);
+    playingArea.addEventListener('mousemove',mouseMove,false);
+    playingArea.addEventListener('mouseup',mouseUp,false);
+    playingArea.addEventListener('touchstart',mouseDown,false);
+    playingArea.addEventListener('touchmove',mouseMove,false);
+    playingArea.addEventListener('touchend',mouseUp,false);
+
     timer = requestAnimationFrame(start);
 }
+
+
 function layoutPage(){
     availableWidth = innerWidth;//get the screen width of user
     availableHeight = innerHeight;//get the screen height of user
@@ -129,36 +132,36 @@ function collisionY(){
         // middle of paddle
         if(ballLeft >= paddleLeft + 16 && ballLeft < paddleLeft + 48){
             if(ballSpeedX < 0){
-                ballSpeedX = -2;
+               ballSpeedX = -2;
             }
             else{
-                ballSpeedX = 2;
+            ballSpeedX = 2;
+            }
+            return true;
+        }    
+        //left edge of paddle 
+        else if(ballLeft >= paddleLeft && ballLeft < paddleLeft + 16){
+            if(ballSpeedX < 0){
+            ballSpeedX = -8;
+            }
+            else{
+            ballSpeedX = 8;
+                }
+                return true;}
+        //right edge of paddle 
+        else if(ballLeft >= paddleLeft + 48 && ballLeft <= paddleLeft + 64){
+            if(ballSpeedX < 0){
+                ballSpeedX = -8;
+            }
+            else{
+                ballSpeedX = 8;
+                }
                 return true;
             }
-        }
-        //left edge of paddle 
-        elseif(ballLeft >= paddleLeft || ballLeft < paddleLeft + 16){
-            if(ballSpeedX < 0){
-                ballSpeedX = -8;
-            }
-            else{
-                    ballSpeedX = 8;
-                    return true;
-                }
-        }
-        //right edge of paddle 
-        elseif(ballLeft >= paddleLeft + 48 && ballLeft <= paddleLeft + 64){
-            if(ballSpeedX < 0){
-                ballSpeedX = -8;
-            }
-            else{
-                    ballSpeedX = 8;
-                    return true;
-                }
-       }
     }
     return false;
 }
+
 
 
 //change difficulty
@@ -170,8 +173,6 @@ function difficulty(){
         ballSpeedY -= 2;
     }
 }
-
-
 
 
 function gameOver(){
