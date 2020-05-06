@@ -27,12 +27,13 @@ function init() {
     playingArea = document.getElementById("playArea");
     layoutPage(); // determine all the sizes for game
     document.addEventListener("keydown",keyListener,false);// false is for bubble phase and true is for capture size 
-    PlayingArray.addEventListener("mousedown",mouseDown,false);
-    PlayingArray.addEventListener("mousemove",mouseMove,false);
-    PlayingArray.addEventListener("mouseUp",mouseUp,false);
-    PlayingArray.addEventListener("touchstart",mouseDown,false);
-    PlayingArray.addEventListener("touchmove",mouseMove,false);
-    PlayingArray.addEventListener("touched",mouseUp,false);
+    
+    playingArea.addEventListener("mousedown",mouseDown,false);
+    playingArea.addEventListener("mousemove",mouseMove,false);
+    playingArea.addEventListener("mouseUp",mouseUp,false);
+    playingArea.addEventListener("touchstart",mouseDown,false);
+    playingArea.addEventListener("touchmove",mouseMove,false);
+    playingArea.addEventListener("touched",mouseUp,false);
     timer = requestAnimationFrame(start);
 }
 function layoutPage(){
