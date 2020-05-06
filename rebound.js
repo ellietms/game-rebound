@@ -40,7 +40,7 @@ function init() {
     paddle = document.getElementById("paddle");
     score = document.getElementById("score");
     playingArea = document.getElementById("playingArea");
-    gear = document.getElementsById("gear");
+    gear = document.querySelector("#gear");
     controls = document.getElementById("controls");
     newButton = document.getElementById("new");
     difficultySelect = document.getElementById("difficulty");
