@@ -34,7 +34,6 @@ function init() {
     PlayingArray.addEventListener("touchmove",mouseMove,false);
     PlayingArray.addEventListener("touched",mouseUp,false);
     timer = requestAnimationFrame(start);
-
 }
 function layoutPage(){
     availableWidth = innerWidth;//get the screen width of user
@@ -154,22 +153,22 @@ function gameOver(){
 }
 
 
-// function mouseDown(event){
-//     drag = true;
-// }
+function mouseDown(event){
+    drag = true;
+}
 
-// function mouseUp(event){
-//     drag = false;
-// }
+function mouseUp(event){
+    drag = false;
+}
 
-// function mouseMove(event){
-//     if(drag){
-//         event.preventDefault();
-//         paddleLeft = event.clientX - 32 || event.targetTouches[0].pageX - 32;
-//         if(paddleLeft < 0)
-//         paddleLeft = 0;
-//         if(paddleRight > playingAreaWidth)
-//         paddleRight = playingAreaWidth;
-//         paddle.style.left = paddleLeft + "px";
-//     }
-// }
+function mouseMove(event){
+    if(drag){
+        event.preventDefault();
+        paddleLeft = event.clientX - 32 || event.targetTouches[0].pageX - 32;
+        if(paddleLeft < 0)
+        paddleLeft = 0;
+        if(paddleRight > playingAreaWidth)
+        paddleRight = playingAreaWidth;
+        paddle.style.left = paddleLeft + "px";
+    }
+}
