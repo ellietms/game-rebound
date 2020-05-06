@@ -2,6 +2,11 @@ let ball;
 let paddle;
 let score;
 let playingArea;
+let gear;
+let controls;
+let newButton;
+let difficultySelect;
+let doneButton;
 let availableWidth;
 let availableHeight;
 let playingAreaWidth;
@@ -25,6 +30,11 @@ function init() {
     paddle = document.getElementById("paddle");
     score = document.getElementById("score");
     playingArea = document.getElementById("playingArea");
+    gear = document.getElementsById("gear");
+    controls = document.getElementById("controls");
+    newButton = document.getElementById("new");
+    difficultySelect = document.getElementById("difficulty");
+    doneButton = document.getElementById("done");
     layoutPage(); // determine all the sizes for game
     document.addEventListener("keydown",keyListener,false);// false is for bubble phase and true is for capture size 
     
