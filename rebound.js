@@ -47,28 +47,31 @@ function init() {
     doneButton = document.getElementById("done");
     sound = document.getElementById("snd");
     music = document.getElementById("music");
+    //make page size
     layoutPage(); // determine all the sizes for game
+    //keyListener for moving may paddle wih keyboard keys
     document.addEventListener("keydown",keyListener,false);// false is for bubble phase and true is for capture size 
-    
+    //set touch and mouse  for game
     playingArea.addEventListener('mousedown',mouseDown,false);
     playingArea.addEventListener('mousemove',mouseMove,false);
     playingArea.addEventListener('mouseup',mouseUp,false);
     playingArea.addEventListener('touchstart',mouseDown,false);
     playingArea.addEventListener('touchmove',mouseMove,false);
     playingArea.addEventListener('touchend',mouseUp,false);
-
+    //setting box
     gear.addEventListener("click",showSettings,false);
     newButton.addEventListener("click",newGame,false);
     doneButton.addEventListener("click",hideSettings,false);
     difficultySelect.addEventListener("change",function(){
     setDifficulty(difficultySelect.selectedIndex)},false);
-
+    //sound default
     sound.addEventListener("click",toggleSound,false);
     music.addEventListener("click",toggleMusic,false);
+    //when everything is ready run start function and make animation
     timer = requestAnimationFrame(start);
 }
 
-
+//make page size
 function layoutPage(){
     availableWidth = innerWidth;//get the screen width of user
     availableHeight = innerHeight;//get the screen height of user
@@ -78,11 +81,12 @@ function layoutPage(){
     playingArea.style.height = playingAreaHeight + "px"//assign new height to page
 }
 
-// 
+//using keyboaed keys
 function keyListener(event){
     let key = event.keyCode;
     //left arrow and A key  
     if((key == 37 || key == 65) && paddleLeft > 0){
+        //left arrow and A make the padddle to  move to left(48px)
         paddleLeft -= paddleSpeedX ;
         if(paddleLeft < 0)
         paddleLeft = 0;
@@ -90,6 +94,7 @@ function keyListener(event){
 
     //right arrow and D key
     else if((key == 39 || key == 68) &&  paddleRight < playingAreaWidth){
+        //right arrow and D key make the padddle to  move to right(48px)
         paddleLeft += paddleSpeedX ;
         if(paddleRight > playingAreaWidth)
         paddleRight = playingAreaWidth;
@@ -98,6 +103,7 @@ function keyListener(event){
     paddle.style.left = paddleLeft + "px"
 }
 
+//making 
 function start(){
     render();
     detectCollisions();
@@ -118,7 +124,7 @@ function render(){
 
 }
 
-//draw ball with new initial
+//draw ball with new initials
 function moveBall(){
     ballLeft += ballSpeedX;
     ballTop += ballSpeedY;
